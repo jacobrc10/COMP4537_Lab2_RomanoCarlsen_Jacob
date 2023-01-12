@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
@@ -9,6 +10,7 @@ var jsonParser = bodyParser.json();
 var urlEncodedParser = bodyParser.urlencoded({ extended: false });
 app.use(urlEncodedParser);
 app.use(jsonParser);
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 app.get('/', (req, res) => {
